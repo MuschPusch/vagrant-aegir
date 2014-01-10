@@ -16,6 +16,7 @@ aegir::platform {'Drupal7':
 
 5. run `$ vagrant reload # enables NFS`
 6. run `$ vagrant provision` to install drupal in the NFS folder
+7. add `aegir.local` to your /etc/hosts or you local DNS
 
 Special thanks to ergontronic and the rest of the aegir development team!
 
