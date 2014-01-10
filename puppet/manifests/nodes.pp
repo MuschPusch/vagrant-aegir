@@ -37,6 +37,6 @@ node 'aegir.local' {
     log        => '/var/aegir/drush.log',
   }
 
-  aegir::platform {'Drupal7':
-    makefile => '/vagrant/drupal_core.make',
-  }
+  #aegir::platform {'Drupal7':
+  #  makefile => '/vagrant/drupal_core.make',
+  #}
