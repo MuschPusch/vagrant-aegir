@@ -1,0 +1,138 @@
+" vim: filetype=vim
+<% if operatingsystem == "Debian" %>
+" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
+" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing debian.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages available in Debian.
+runtime! debian.vim
+<% end %>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" backup settings
+set nocompatible
+
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+set timeoutlen=250  " Time to wait after ESC
+set nobackup
+set noswapfile
+
+" Enable syntax highlighting
+if &t_Co > 1
+  syntax enable
+endif
+syntax on
+
+" Always edit in utf-8:
+set encoding=utf-8
+
+" When in split screen, map <C-LeftArrow> and <C-RightArrow> to switch panes.
+" NEEDS WORK
+nn ^[[5C <C-W>w
+nn ^[[5R <C-W>W
+
+" Enable filetype detection
+filetype plugin on
+
+" jump to the last position when reopening a file
+if has("autocmd")
+ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+ \| exe "normal! g'\"" | endif
+endif
+
+" If you search for an all-lowercase string your search will becase-insensitive, but if one or more characters is uppercase the search will be case-sensitive.
+set ignorecase
+set smartcase
+
+" highlight search results (as you type)
+set incsearch
+set showmatch
+set hlsearch
+
+" set paste mode on F2
+set pastetoggle=<F2>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VUNDLE STUFF
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+Bundle 'tomasr/molokai'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'ap/vim-css-color.git'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'git://drupalcode.org/project/vimrc.git', {'rtp': 'bundle/vim-plugin-for-drupal/'}
+
+set expandtab
+set autoindent
+set smartindent
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Statusbar
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set laststatus=2
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" drupal stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set tabstop=2
+set shiftwidth=2
+
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" plugin stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree not used
+"autocmd vimenter * NERDTree
+"" don't act like vi
+
+"" YouCompleteMe array key completion
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+""let g:ycm_key_list_previous_completion=['<Up>']
+"" Ultisnips
+""let g:UltiSnipsExpandTrigger="<c-tab>"
+""let g:UltiSnipsListSnippets="<c-s-tab>"
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath+=~/.vim/bundle/ultisnips
+
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+colorscheme molokai

@@ -1,0 +1,38 @@
+<%
+# Copyright 2012 Caleb Thorne <http://www.calebthorne.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+-%>
+
+<%
+  archive_url = 'http://us.archive.ubuntu.com/ubuntu/'
+-%>
+deb <%= archive_url %> <%= release %> main restricted
+deb-src <%= archive_url %> <%= release %> main restricted
+deb <%= archive_url %> <%= release %>-updates main restricted
+deb-src <%= archive_url %> <%= release %>-updates main restricted
+deb <%= archive_url %> <%= release %> universe
+deb-src <%= archive_url %> <%= release %> universe
+deb <%= archive_url %> <%= release %>-updates universe
+deb-src <%= archive_url %> <%= release %>-updates universe
+deb <%= archive_url %> <%= release %> multiverse
+deb-src <%= archive_url %> <%= release %> multiverse
+deb <%= archive_url %> <%= release %>-updates multiverse
+deb-src <%= archive_url %> <%= release %>-updates multiverse
+deb <%= archive_url %> <%= release %>-security main restricted
+deb-src <%= archive_url %> <%= release %>-security main restricted
+deb <%= archive_url %> <%= release %>-security universe
+deb-src <%= archive_url %> <%= release %>-security universe
+deb <%= archive_url %> <%= release %>-security multiverse
+deb-src <%= archive_url %> <%= release %>-security multiverse
