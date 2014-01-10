@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #type: "nfs" ,
     #nfs: true,
     # enable to disable
-    # disabled: true,
+    disabled: true,
     owner: "aegir",
     group: "aegir",
     # vagrant 1.3+ only
