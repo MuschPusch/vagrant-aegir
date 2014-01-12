@@ -1,11 +1,8 @@
 node 'aegir.local' {
 
-#  include git
-#  include grunt
-#  include phpmyadmin
+#  include grunt # needs work
+#  include phpmyadmin #should work needs testing
   include apt
-#  THIS SHOULD ONLY BE RUN AFTER AEGIR IS INSTALLED AND NFS IS ENABLED
-#  include drupal
   include vim
 
   package { 'git':
@@ -27,16 +24,21 @@ node 'aegir.local' {
     require        => Class['drush::git::drush'],
   }
 }
+ 
+exec { "echo":
+  command => "/bin/echo 'sleep 5 ; apache2 start' >> /etc/init.d/rc.local ",
+  require => Class['aegir::dev'],
+}
+# This is in the defaults that is included in aegir::platform...
+# I'm not sure why it isn't inherited properly from there.
+Drush::Run {
+  site_alias => '@hostmaster',
+  drush_user => 'aegir',
+  drush_home => '/var/aegir',
+  log        => '/var/aegir/drush.log',
+}
 
-  # This is in the defaults that is included in aegir::platform...
-  # I'm not sure why it isn't inherited properly from there.
-  Drush::Run {
-    site_alias => '@hostmaster',
-    drush_user => 'aegir',
-    drush_home => '/var/aegir',
-    log        => '/var/aegir/drush.log',
-  }
-
-  #aegir::platform {'Drupal7':
-  #  makefile => '/vagrant/drupal_core.make',
-  #}
+#  THIS SHOULD ONLY BE RUN AFTER AEGIR IS INSTALLED AND NFS IS ENABLED
+#aegir::platform {'Drupal7':
+#  makefile => '/vagrant/drupal_core.make',
+#}
