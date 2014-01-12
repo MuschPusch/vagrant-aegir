@@ -26,10 +26,13 @@ node 'aegir.local' {
   include php
 }
  
+# we need to wait a bit since apache should only start when NFS is enabled
+# otherwise some .htaccess files which are required won't be available
 exec { "echo":
   command => "/bin/echo 'sleep 5 ; apache2 start' >> /etc/init.d/rc.local ",
   require => Class['aegir::dev'],
 }
+
 # This is in the defaults that is included in aegir::platform...
 # I'm not sure why it isn't inherited properly from there.
 Drush::Run {
