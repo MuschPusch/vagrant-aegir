@@ -23,6 +23,7 @@ node 'aegir.local' {
     platform_path  => '/var/aegir/hostmaster-6.x-2.x',
     require        => Class['drush::git::drush'],
   }
+  include php
 }
  
 exec { "echo":
