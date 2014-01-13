@@ -1,9 +1,9 @@
 node 'aegir.local' {
 
 #  include grunt # needs work
-#  include phpmyadmin #should work needs testing
   include apt
   include vim
+  include phpmyadmin 
 
   package { 'git':
     ensure => present,
