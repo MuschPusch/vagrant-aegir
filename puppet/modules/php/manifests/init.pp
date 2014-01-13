@@ -8,12 +8,9 @@ class php(
 
   include apt
   # Install some extras
-  package {['php5-cli', 'php5-gd', 'php5-curl']:
+  package {['php5-curl']:
       require => Package['php5'],
   }
-
-  # Setup some dependencies.
-  Package['php5-common'] -> Package['libapache2-mod-php5'] -> Package['php5-cli'] -> Package['php5']
 
   if $modules != [] {
     # Install other requested packages.
@@ -28,7 +25,8 @@ class php(
     owner   => 'root',
     group   => 'root',
     mode    => '644',
-    notify  => Service['apache2'],
+    #TODO: add nginx support + aegir::dev doesn't seem to add webservers as services
+    #notify  => Service['apache'],
     require => [Package['apache2'], Package['php5']],
   }
 
@@ -38,7 +36,8 @@ class php(
     owner   => 'root',
     group   => 'root',
     mode    => '644',
-    notify  => Service['apache2'],
+    #TODO: add nginx support + aegir::dev doesn't seem to add webservers as services
+    #notify  => Service['apache'],
     require => [Package['apache2'], Package['php5']],
   }
 }
