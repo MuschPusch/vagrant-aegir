@@ -1,6 +1,7 @@
 # vagrant-aegir
 
 *aegir won't install on the shared NFS module but you can enable it after puppet is run in the Vagrant file*
+*phpmyadmin should be available at aegir.local/phpmyadmin*
 
 ### Install 
 1. Make sure you have vagrant-vbguest installed
