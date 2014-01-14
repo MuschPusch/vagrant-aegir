@@ -5,7 +5,7 @@ node 'aegir.local' {
   include vim
   include phpmyadmin 
 
-  package { 'git':
+  package { ['git', 'tig']:
     ensure => present,
   }
 
