@@ -8,7 +8,7 @@ class php(
 
   include apt
   # Install some extras
-  package {['php5-curl']:
+  package {['php5-curl', 'php5-xdebug', 'php-apc']:
       require => Package['php5'],
   }
 
