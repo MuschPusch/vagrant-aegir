@@ -10,18 +10,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   config.vm.hostname = "aegir.local"
-  # NEEDS WORK
-  config.vm.synced_folder ".", "/var/aegir/platforms/",
-    # not compatible with 777 mount + owner + group
-    #type: "nfs" , 
-    #nfs: true,
-    # enable to disable 
-    disabled: true,
-    owner: "aegir", 
-    group: "aegir", 
-    # vagrant 1.3+ only
-    :mount_options => ["dmode=755","fmode=755"]
 
+  #Declare shared folder with Vagrant syntax
+  config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir", "/vagrant-nfs", :type => :nfs
+  # Use vagrant-bindfs to re-mount folder
+  # TODO: needs work for better permissions
+  config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
+    :perms           => "u=rwX:g=rwX:o=rwX",
+    :owner              => 'aegir',
+    :group              => 'aegir'
+  
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
