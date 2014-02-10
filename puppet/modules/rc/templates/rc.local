@@ -1,0 +1,16 @@
+function mountCheck() {
+    volume="/vagrant-nfs"
+    if mount|grep $volume; then
+      if ps ax | grep -v grep | grep apache > /dev/null; then
+        logger 'rc.local apache is running'
+      else
+        logger 'rc.local apache is getting started'
+        sudo service apache2 start
+      fi
+    else
+       logger 'rc.local nfs is not loaded lets try again...'
+       sleep 5s
+       mountCheck
+   fi
+}
+ mountCheck
