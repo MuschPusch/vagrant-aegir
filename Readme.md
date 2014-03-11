@@ -1,10 +1,9 @@
 # vagrant-aegir
 
-*aegir won't install on the shared NFS module but you can enable it after puppet is run in the Vagrant file*
 *phpmyadmin should be available at aegir.local/phpmyadmin*
 
 ### Install 
-1. Make sure you have <a href='https://github.com/dotless-de/vagrant-vbguest'>vagrant-vbguest</a> installed
+1. Make sure you have <a href='https://github.com/dotless-de/vagrant-vbguest'>vagrant-vbguest</a> and <a href='https://github.com/gael-ian/vagrant-bindfs'>vagrant-bindfs</a> installed
 2. Clone this repo and run `$ vagrant up` to trigger the vagrant + puppet install 
 3. Enable NFS in the vagrant file by commenting out `disabled: true,`
 4. Enable the following code in `puppet/manifests/node.pp` to install a Drupal platform
