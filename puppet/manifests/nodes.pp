@@ -42,6 +42,7 @@ node 'aegir.local' {
 # otherwise some .htaccess files which are required won't be available
 
 include rc # needs work. We should mount BindFS using puppet
+include pearpackages 
 
 # This is in the defaults that is included in aegir::platform...
 # I'm not sure why it isn't inherited properly from there.
