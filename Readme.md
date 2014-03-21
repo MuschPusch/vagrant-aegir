@@ -19,6 +19,7 @@
     :group              => 'aegir'
 
 ```
+10. Reload the vagrant box with the new configuration: `$ vagrant reload`
 
 
 
