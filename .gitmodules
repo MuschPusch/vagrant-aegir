@@ -8,4 +8,4 @@
 	branch = new
 [submodule "puppet/modules/vim/files/vundle"]
 	path = puppet/modules/vim/files/vundle
-	url = https://github.com/gmarik/vundle
+	url = https://github.com/gmarik/Vundle.vim
