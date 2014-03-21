@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "aegir.local"
 
   #Declare shared folder with Vagrant syntax
-  config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir", "/vagrant-nfs", :type => :nfs
+  config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir-test", "/vagrant-nfs", :type => :nfs
   # Use vagrant-bindfs to re-mount folder
   # TODO: needs work for better permissions
   config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
