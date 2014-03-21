@@ -1,0 +1,15 @@
+diff --git a/manifests/git/drush.pp b/manifests/git/drush.pp
+index d2a0be7..406ee86 100644
+--- a/manifests/git/drush.pp
++++ b/manifests/git/drush.pp
+@@ -15,6 +15,10 @@ class drush::git::drush (
+     package { 'php5-cli': ensure => present, }
+   }
+ 
++  package { ['curl']:
++    ensure => present,
++  }
++
+   drush::git { $git_repo :
+     path       => '/usr/share',
+     git_branch => $git_branch,

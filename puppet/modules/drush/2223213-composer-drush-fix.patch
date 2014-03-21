@@ -1,0 +1,62 @@
+diff --git a/manifests/git/drush.pp b/manifests/git/drush.pp
+index d2a0be7..587dfaa 100644
+--- a/manifests/git/drush.pp
++++ b/manifests/git/drush.pp
+@@ -30,31 +30,32 @@ class drush::git::drush (
+     notify  => Exec['first drush run'],
+   }
+ 
+-  exec {'Install composer' :
+-    command => 'curl -sS https://getcomposer.org/installer | php',
+-    require => Package['php5-cli'],
+-  }
+-
+-  exec {'Make Composer globally executable' :
+-    command => 'mv composer.phar /usr/local/bin/composer',
+-    require => Exec['Install composer'],
+-    before  => Exec['Install Drush dependencies'],
+-  }
+-
+-  exec {'Install Drush dependencies' :
+-    command => 'composer install',
+-    cwd     => '/usr/share/drush',
+-  }
+-
+-  # Needed to download a Pear library
+-  exec {'first drush run':
+-    command     => 'drush cache-clear drush',
+-    refreshonly => true,
+-    require     => [
+-      File['symlink drush'],
+-      Package['php5-cli'],
+-      Exec['Install Drush dependencies'],
+-    ],
++  if $git_branch == '6.x' {
++    exec {'Install composer' :
++      command => 'curl -sS https://getcomposer.org/installer | php',
++      require => Package['php5-cli'],
++    }
++
++    exec {'Make Composer globally executable' :
++      command => 'mv composer.phar /usr/local/bin/composer',
++      require => Exec['Install composer'],
++      before  => Exec['Install Drush dependencies'],
++    }
++
++    exec {'Install Drush dependencies' :
++      command => 'composer install',
++      cwd     => '/usr/share/drush',
++    }
++    # Needed to download a Pear library
++    exec {'first drush run':
++      command     => 'drush cache-clear drush',
++      refreshonly => true,
++      require     => [
++        File['symlink drush'],
++        Package['php5-cli'],
++        Exec['Install Drush dependencies'],
++      ],
++    }
+   }
+ 
+ }
