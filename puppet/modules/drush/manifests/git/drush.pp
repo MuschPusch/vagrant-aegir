@@ -31,8 +31,21 @@ class drush::git::drush (
     path    => '/usr/bin/drush',
     target  => '/usr/share/drush/drush',
     require => Drush::Git[$git_repo],
-    #notify  => Exec['first drush run'],
+    notify  => Exec['first drush run'],
   }
+
+  # Needed to download a Pear library
+  exec {'first drush run':
+    command     => 'drush cache-clear drush',
+    refreshonly => true,
+    require     => [
+      File['symlink drush'],
+      Package['php5-cli'],
+      #Exec['Install Drush dependencies'],
+    ],
+  }
+
+
 
   if $git_branch == '6.x' {
     exec {'Install composer' :
@@ -51,15 +64,4 @@ class drush::git::drush (
       cwd     => '/usr/share/drush',
     }
   }
-    # Needed to download a Pear library
-    exec {'first drush run':
-      command     => 'drush cache-clear drush',
-      refreshonly => true,
-      require     => [
-        File['symlink drush'],
-        Package['php5-cli'],
-        #Exec['Install Drush dependencies'],
-      ],
-    }
-
 }
