@@ -45,7 +45,6 @@ class php(
       command => "sed -i 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=aegir/' /etc/apache2/envvars",
       onlyif  => "grep -c 'APACHE_RUN_USER=www-data' /etc/apache2/envvars",
       require => Package["apache2"],
-      notify  => Service["apache2"],
   }
 
   # Change group
@@ -53,7 +52,6 @@ class php(
       command => "sed -i 's/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=aegir/' /etc/apache2/envvars",
       onlyif  => "grep -c 'APACHE_RUN_GROUP=www-data' /etc/apache2/envvars",
       require => Package["apache2"],
-      notify  => Service["apache2"],
   }
 
 }
