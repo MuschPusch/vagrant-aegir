@@ -3,6 +3,7 @@
 *phpmyadmin should be available at aegir.local/phpmyadmin*
 
 ### Install 
+0. Change the path for bindfs in the Vagrantfile
 1. Make sure you have <a href='https://github.com/dotless-de/vagrant-vbguest'>vagrant-vbguest</a> and <a href='https://github.com/gael-ian/vagrant-bindfs'>vagrant-bindfs</a> installed
 2. Clone this repo and run `$ git submodule update` 
 3. Run `$ vagrant up` to trigger the vagrant + puppet install 
@@ -21,4 +22,9 @@ aegir::platform {'Drupal7':
 9. check the terminal output for the one time login link for the aegir backend
 
 Special thanks to ergonlogic (Christopher Gervais) and the rest of the aegir development team!
+
+# TODO
+- librarian install
+- SOLR
+
 
