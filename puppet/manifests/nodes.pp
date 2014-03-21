@@ -2,7 +2,7 @@ node 'aegir.local' {
 
 #  include grunt # needs work
   include apt
-  include vim
+  # include vim #broken 
   include phpmyadmin 
 
   package { ['git', 'tig']:

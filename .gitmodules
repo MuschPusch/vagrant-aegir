@@ -6,6 +6,3 @@
 	path = puppet/modules/aegir
 	url = http://git.drupal.org/project/puppet-aegir.git
 	branch = new
-[submodule "puppet/modules/vim/files/vundle"]
-	path = puppet/modules/vim/files/vundle
-	url = https://github.com/gmarik/Vundle.vim
