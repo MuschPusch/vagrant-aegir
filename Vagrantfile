@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "aegir.local"
 
   #Declare shared folder with Vagrant syntax
-  config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir-test", "/vagrant-nfs", :type => :nfs
+  config.vm.synced_folder "/PATHTOYOUR-LOCAL-VAGRANT-FOLDER/vagrant-aegir-test", "/vagrant-nfs", :type => :nfs
   # Use vagrant-bindfs to re-mount folder
   # IMPORTANT: uncomment the lines below to configure bindfs sharing AFTER the vagrant box is provisioned
   #config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
@@ -46,6 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.facter = {
       "fqdn" => "aegir.local"
     }
+    # enable this for debugging
     #puppet.options = "--debug --verbose"
   end
 
