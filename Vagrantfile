@@ -14,11 +14,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #Declare shared folder with Vagrant syntax
   config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir-test", "/vagrant-nfs", :type => :nfs
   # Use vagrant-bindfs to re-mount folder
-  # TODO: needs work for better permissions
-  config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
-    :perms           => "u=rwX:g=rwX:o=rwX",
-    :owner              => 'aegir',
-    :group              => 'aegir'
+  # IMPORTANT: needs work for better permissions
+  #config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
+  #  :perms           => "u=rwX:g=rwX:o=rwX",
+  #  :owner              => 'aegir',
+  #  :group              => 'aegir'
   
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
