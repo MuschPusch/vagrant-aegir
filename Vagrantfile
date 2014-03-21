@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #Declare shared folder with Vagrant syntax
   config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir-test", "/vagrant-nfs", :type => :nfs
   # Use vagrant-bindfs to re-mount folder
-  # IMPORTANT: needs work for better permissions
+  # IMPORTANT: uncomment the lines below to configure bindfs sharing AFTER the vagrant box is provisioned
   #config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
   #  :perms           => "u=rwX:g=rwX:o=rwX",
   #  :owner              => 'aegir',
