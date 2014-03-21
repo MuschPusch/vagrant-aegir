@@ -13,7 +13,10 @@ node 'aegir.local' {
 #    ensure => present,
 #  }
 
-  class { 'drush::git::drush':
+  # install drush
+  class {'drush::git::drush':
+    git_branch => '5.x',
+    update     => true,
     require => Package['git'],
   }
 
