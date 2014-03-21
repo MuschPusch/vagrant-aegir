@@ -40,4 +40,20 @@ class php(
     #notify  => Service['apache'],
     require => [Package['apache2'], Package['php5']],
   }
+  # Change user
+  exec { "ApacheUserChange" :
+      command => "sed -i 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=aegir/' /etc/apache2/envvars",
+      onlyif  => "grep -c 'APACHE_RUN_USER=www-data' /etc/apache2/envvars",
+      require => Package["apache2"],
+      notify  => Service["apache2"],
+  }
+
+  # Change group
+  exec { "ApacheGroupChange" :
+      command => "sed -i 's/APACHE_RUN_GROUP=www-data/APACHE_RUN_GROUP=aegir/' /etc/apache2/envvars",
+      onlyif  => "grep -c 'APACHE_RUN_GROUP=www-data' /etc/apache2/envvars",
+      require => Package["apache2"],
+      notify  => Service["apache2"],
+  }
+
 }
