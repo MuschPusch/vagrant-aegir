@@ -1,6 +1,6 @@
 node 'aegir.local' {
 
-#  include grunt # needs work
+  include grunt 
   include apt
   include vim
   include phpmyadmin 
@@ -51,5 +51,5 @@ Drush::Run {
 
 #  THIS SHOULD ONLY BE RUN AFTER AEGIR IS INSTALLED AND NFS IS ENABLED
 #aegir::platform {'Drupal7':
-#  makefile => '/vagrant/drupal_core.make',
+  #makefile => '/vagrant/drupal_core.make',
 #}
