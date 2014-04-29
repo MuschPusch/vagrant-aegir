@@ -1,9 +1,9 @@
 node 'aegir.local' {
 
-#  include grunt # needs work
+  include grunt
   include apt
-  # include vim #broken 
-  include phpmyadmin 
+  # include vim #broken
+  include phpmyadmin
 
   package { ['git', 'tig']:
     ensure => present,
@@ -37,12 +37,12 @@ node 'aegir.local' {
     require => Class['drush::git::drush'],
   }
 }
- 
+
 # we need to wait a bit since apache should only start when NFS is enabled
 # otherwise some .htaccess files which are required won't be available
 
 include rc # needs work. We should mount BindFS using puppet
-include pearpackages 
+include pearpackages
 
 # This is in the defaults that is included in aegir::platform...
 # I'm not sure why it isn't inherited properly from there.
