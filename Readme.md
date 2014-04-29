@@ -21,6 +21,14 @@
 ```
 8. Reload the vagrant box with the new configuration: `$ vagrant reload`
 
+With the latest vagrant & virtualbox the guest additions seem to have some problems. If you can't mount the bindfs folder try:
+
+```bash
+$ vagrant ssh
+$ sudo ln -s /opt/VBoxGuestAdditions-4.3.10/lib/VBoxGuestAdditions /usr/lib/VBoxGuestAdditions
+```
+
+and reload the box
 
 
 Special thanks to ergonlogic (Christopher Gervais) and the rest of the aegir development team!
