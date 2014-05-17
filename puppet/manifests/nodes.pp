@@ -1,9 +1,10 @@
 node 'aegir.local' {
 
-  include grunt 
+  include grunt
   include apt
   include vim
-  include phpmyadmin 
+  include phpmyadmin
+  include tuningprimer
 
   package { ['git', 'tig']:
     ensure => present,
@@ -34,7 +35,7 @@ node 'aegir.local' {
     require => Class['drush::git::drush'],
   }
 }
- 
+
 # we need to wait a bit since apache should only start when NFS is enabled
 # otherwise some .htaccess files which are required won't be available
 
