@@ -1,11 +1,4 @@
-[submodule "puppet/modules/drush"]
-	path = puppet/modules/drush
-	url = http://git.drupal.org/project/puppet-drush.git
-	branch = new
 [submodule "puppet/modules/aegir"]
 	path = puppet/modules/aegir
 	url = http://git.drupal.org/project/puppet-aegir.git
 	branch = new
-[submodule "puppet/modules/vim/files/vundle"]
-	path = puppet/modules/vim/files/vundle
-	url = https://github.com/gmarik/vundle

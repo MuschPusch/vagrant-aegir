@@ -2,19 +2,20 @@ node 'aegir.local' {
 
   include grunt
   include apt
-  include vim
   include phpmyadmin
   include tuningprimer
+  # include vim #broken
+  include phpmyadmin
 
   package { ['git', 'tig']:
     ensure => present,
   }
 
-#  package { 'jenkins':
-#    ensure => present,
-#  }
 
-  class { 'drush::git::drush':
+  # install drush
+  class {'drush::git::drush':
+    git_branch => '5.x',
+    update     => true,
     require => Package['git'],
   }
 
@@ -40,6 +41,7 @@ node 'aegir.local' {
 # otherwise some .htaccess files which are required won't be available
 
 include rc # needs work. We should mount BindFS using puppet
+include pearpackages
 
 # This is in the defaults that is included in aegir::platform...
 # I'm not sure why it isn't inherited properly from there.

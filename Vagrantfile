@@ -15,7 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #Declare shared folder with Vagrant syntax
   config.vm.synced_folder ".", "/var/aegir/platforms", nfs: true
-
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
@@ -44,6 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.facter = {
       "fqdn" => "aegir.local"
     }
+    # enable this for debugging
     #puppet.options = "--debug --verbose"
   end
 
