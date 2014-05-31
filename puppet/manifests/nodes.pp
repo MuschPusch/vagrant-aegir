@@ -50,7 +50,3 @@ Drush::Run {
   log        => '/var/aegir/drush.log',
 }
 
-#  THIS SHOULD ONLY BE RUN AFTER AEGIR IS INSTALLED AND NFS IS ENABLED
-#aegir::platform {'Drupal7':
-  #makefile => '/vagrant/drupal_core.make',
-#}
