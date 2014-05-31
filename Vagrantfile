@@ -1,4 +1,4 @@
-# -*- mode: ruby -*-
+# pus = 2*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -10,20 +10,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   config.vm.hostname = "aegir.local"
+  #config.ssh.username = "aegir"
+  #config.ssh.insert_key = true
 
   #Declare shared folder with Vagrant syntax
-  config.vm.synced_folder "/Users/rhizom/vagrant/projects/vagrant-aegir", "/vagrant-nfs", :type => :nfs
-  # Use vagrant-bindfs to re-mount folder
-  # TODO: needs work for better permissions
-  config.bindfs.bind_folder  "/vagrant-nfs","/var/aegir/platforms",
-    :perms           => "u=rwX:g=rwX:o=rwX",
-    :owner              => 'aegir',
-    :group              => 'aegir'
-  
+  config.vm.synced_folder ".", "/var/aegir/platforms", nfs: true
+
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  
+
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
   # any other machines on the same network, but cannot be accessed (through this
@@ -34,7 +30,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   #increase memory
   config.vm.provider "virtualbox" do |v|
-    v.customize ["modifyvm", :id, "--memory", 1024]
+    v.customize ["modifyvm", :id, "--cpuexecutioncap", "90"]
+    v.customize ["modifyvm", :id, "--memory", 1448]
+    v.cpus = 4
   end
 
   ## Use all the defaults:
