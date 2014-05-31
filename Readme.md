@@ -3,7 +3,7 @@
 *phpmyadmin should be available at aegir.local/phpmyadmin*
 
 ### Install 
-1. Make sure you have <a href='https://github.com/dotless-de/vagrant-vbguest'>vagrant-vbguest</a> and <a href='https://github.com/gael-ian/vagrant-bindfs'>vagrant-bindfs</a> installed
+1. Make sure you have <a href='https://github.com/dotless-de/vagrant-vbguest'>vagrant-vbguest</a> installed
 2. Clone this repo and run `$ vagrant up` to trigger the vagrant + puppet install 
 3. Enable NFS in the vagrant file by commenting out `disabled: true,`
 4. Enable the following code in `puppet/manifests/node.pp` to install a Drupal platform
@@ -21,3 +21,4 @@ aegir::platform {'Drupal7':
 
 Special thanks to ergonlogic (Christopher Gervais) and the rest of the aegir development team!
 
+Todo: add user aegir to admin group
