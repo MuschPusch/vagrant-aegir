@@ -40,6 +40,18 @@ class php(
     #notify  => Service['apache'],
     require => [Package['apache2'], Package['php5']],
   }
+
+  file {"/etc/apache2/apache.conf":
+    ensure  => present,
+    source  => 'puppet:///modules/php/apache.conf',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '644',
+    #TODO: add nginx support + aegir::dev doesn't seem to add webservers as services
+    #notify  => Service['apache'],
+    require => [Package['apache2'], Package['php5']],
+  }
+
   # Change user
   exec { "ApacheUserChange" :
       command => "sed -i 's/APACHE_RUN_USER=www-data/APACHE_RUN_USER=aegir/' /etc/apache2/envvars",
