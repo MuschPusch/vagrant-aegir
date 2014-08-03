@@ -51,4 +51,3 @@ Drush::Run {
   drush_home => '/var/aegir',
   log        => '/var/aegir/drush.log',
 }
-
