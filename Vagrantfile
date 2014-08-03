@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #config.ssh.insert_key = true
 
   #Declare shared folder with Vagrant syntax
-  config.vm.synced_folder ".", "/var/aegir/platforms", synced_folder_type: nfs
+  config.vm.synced_folder ".", "/var/aegir/platforms", synced_folder_type: "nfs"
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
